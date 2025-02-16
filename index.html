@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>LOVE</title>
+		<style type="text/css">
+			body {
+			           background-image: url('FSS.png'); /* 替换为你的图片路径 */
+			           background-size: cover; /* 使背景图覆盖整个页面 */
+			           background-position: center; /* 背景图居中 */
+			           background-repeat: no-repeat; /* 防止背景图重复 */
+			           margin: 0; /* 去除默认的 body 边距 */
+			           height: 100vh; /* 使 body 占满整个视口高度 */
+			       }
+			.text{
+				text-align: center;
+				font-size: 70px;
+				font-family: 楷体;
+				color: hotpink;
+				margin-top: 50px;
+			}
+			.IMG{
+				width: 250px; /* 设置图片宽度 */
+				height: auto; /* 保持宽高比 */
+				display: block; /* 将图片设置为块级元素 */
+				margin: 0 auto; /* 水平居中 */
+			}
+			
+			/* 设置按钮容器的样式，使其居中 */
+			.button-container {
+			    display: flex;
+			    justify-content: center; /* 水平居中 */
+			    align-items: center; /* 垂直居中 */
+			    
+			    gap: 20px; /* 设置按钮之间的间距 */
+			}
+			
+			/* 设置按钮的通用样式 */
+			.BU {
+			    padding: 15px 30px; /* 增大按钮的内边距 */
+			    font-size: 18px; /* 增大字体大小 */
+			    border: none; /* 去掉边框 */
+			    color: white; /* 设置文字颜色为白色 */
+			    cursor: pointer; /* 设置鼠标悬停为手型 */
+			    transition: background-color 0.3s ease; /* 添加背景色过渡效果 */
+				 border-radius: 25px; /* 添加圆角效果 */
+			}
+			
+			/* 设置“同意”按钮的背景色为红色 */
+			.agree {
+			    background-color: red;
+			}
+			
+			/* 设置“拒绝”按钮的背景色为蓝色 */
+			.reject {
+			    background-color: blue;
+			}
+			
+			/* 添加悬停效果 */
+			.agree:hover {
+			    background-color: darkred; /* 悬停时变为深红色 */
+			}
+			
+			.reject:hover {
+			    background-color: darkblue; /* 悬停时变为深蓝色 */
+			}
+			.t{
+				text-align: center;
+				font-size: 200px;
+				font-family: 楷体;
+				color: hotpink;
+				margin-top: 20px;
+				margin-bottom: 100px;
+			}
+			 
+		</style>
+		<script type="text/javascript">
+			var count=1;
+			
+			function R(){
+				
+				var sum= count++;
+				
+				if(count==8){
+					 // 获取“拒绝”按钮元素
+					    const rejectButton = document.querySelector('.reject');
+					    // 隐藏按钮
+					    rejectButton.style.display = 'none';
+				}else{
+					
+					// 获取按钮元素
+					   const button = document.getElementById('Agree');
+					   // 获取“拒绝”按钮元素
+					      const rejectButton = document.querySelector('.reject');
+					   
+					   // 获取当前样式值
+					       const currentPadding = window.getComputedStyle(button).padding;
+					       const currentFontSize = window.getComputedStyle(button).fontSize;
+						   
+						   
+						    // 将样式值转换为数值
+						       const paddingValues = currentPadding.split(' ').map(value => parseFloat(value));
+						       const fontSizeValue = parseFloat(currentFontSize);
+							   
+							   
+							    // 放大 1.5 倍
+							       const newPadding = paddingValues.map(value => value * 1.5 + 'px').join(' ');
+							       const newFontSize = fontSizeValue * 1.5 + 'px';
+								
+					    // 修改按钮样式
+					    button.style.padding = newPadding; // 放大内边距
+					    button.style.fontSize = newFontSize; // 放大字体
+						button.style.backgroundColor = '#ff0000'; // 修改背景色（可选）
+						if(sum==1){
+							rejectButton.value = '？认真的吗？'; // 修改按钮的文本
+						}else if(sum==2){
+							rejectButton.value = '要不在想想？'; // 修改按钮的文本
+						}
+						else if(sum==3){
+							rejectButton.value = '不可以选这个'; // 修改按钮的文本
+						}else if(sum==4){
+							rejectButton.value = '我会伤心的...'; // 修改按钮的文本
+						}else{
+							rejectButton.value = ':(不行';
+						}
+						 
+					   
+				}
+			}
+			function A() {
+			    // 获取“拒绝”和“同意”按钮元素
+			    const rejectButton1 = document.querySelector('.reject');
+			    const rejectButton2 = document.querySelector('.agree');
+			
+			    // 隐藏按钮
+			    if (rejectButton1) rejectButton1.style.display = 'none';
+			    if (rejectButton2) rejectButton2.style.display = 'none';
+			
+			    // 创建新的 <p> 元素
+			    const newParagraph = document.createElement('p');
+			    newParagraph.className = 't'; // 添加 class
+			    newParagraph.textContent = '!!! 最喜欢你!!(>.<)❤~'; // 设置文本内容
+			
+			     // 获取 <p class="text"> 元素
+			        const textParagraph = document.querySelector('.text');
+			    
+			        // 将 <p> 元素插入到 <p class="text"> 下面 20px 的位置
+			        textParagraph.insertAdjacentElement('afterend', newParagraph);
+			    
+			        // 设置新段落的间距
+			        newParagraph.style.marginTop = '20px';
+			}
+			
+		</script>
+	</head>
+	<body>
+		<p class="text">可以做我你Girlfriend吗？</p>
+		<!-- <img src="Q.jpg" class="IMG"> -->
+		<div class="button-container">
+		<input type="button" value="同意" class="BU agree" id="Agree" onclick="A()">
+		<input type="button" value="拒绝" class="BU reject" onclick="R()">
+		</div>
+	</body>
+</html>
