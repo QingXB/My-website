@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>TEST</title>
+		<script type="text/javascript">
+			function kit(){
+				var myWeight = document.getElementById("myWeight").value;
+				var myheight = document.getElementById("myheight").value;
+				//var kit = myWeight/(Math.pow(myheight,2));
+				var kit = myWeight/(myheight*myheight);
+				var showResult;
+				if(kit<20){
+					showResult="细狗";
+				}else if(kit<=25){
+					showResult = "你活得很好";
+				}else{
+					showResult = "胖死了";
+			}
+			document.getElementById("result").innerText = showResult;
+			}
+		</script>
+	</head>
+	<body>
+		
+		<table border="0" cellspacing="5" width="200" height="200" align="center">
+			<caption>克莱托</caption>
+			<tr><td>体重</td><td><input type="text" id="myWeight" placeholder="KG"></td></tr>
+			<tr><td>身高</td><td><input type="text" id="myheight" placeholder="M"></td></tr>
+			〈<tr><td><input type="button" value="测试" onclick="kit()"></td><td id="result"></td></tr>
+		</table>
+	</body>
+</html>
