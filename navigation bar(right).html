@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态导航栏</title>
+    <style>
+        /* 全局设置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            height: 2000px; /* 用于测试滚动效果 */
+			background-image: url('img/JavaScript.png'); /* 替换为你的图片路径 */
+			background-size: cover; /* 使背景图覆盖整个页面 */
+			background-position: center; /* 背景图居中 */
+			background-repeat: no-repeat; /* 防止背景图重复 */
+			margin: 0; /* 去除默认的 body 边距 */
+			height: 100vh; /* 使 body 占满整个视口高度 */
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+			justify-content: center; /* 水平居中 */
+			align-items: center; /* 垂直居中 */
+        }
+
+        /* 导航栏样式 */
+        .sidebar {
+            position: fixed;
+            top: 0;
+			margin-top: 9%;
+            right: 20px; /* 距左边 20px */
+            width: 70px; /* 初始宽度 70px */
+            height: 4	0%; /* 导航栏占满整个高度 */
+            background-color: #0000ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 20px 0;
+            border-radius: 20px; /* 增加圆角 */
+            transition: none; /* 导航栏状态不变 */
+            z-index: 1000; /* 确保导航栏位于页面顶部 */
+        }
+        
+        /* 菜单项样式 */
+        .menu-item {
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 10px 0;
+            border-radius: 10px; /* 为菜单项增加圆角 */
+            width: 100%; /* 保证每个菜单项的宽度一致 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* 使气泡相对定位 */
+        }
+        
+        /* 图标样式 */
+        .icon {
+            display: block;
+            font-size: 24px;
+            transition: transform 0.3s ease; /* 图标放大过渡效果 */
+        }
+
+        /* 鼠标悬停时图标放大1.25倍 */
+        .menu-item:hover .icon {
+            transform: scale(1.25);
+        }
+        
+        /* 标签（气泡）样式 */
+        .label {
+            display: none;
+            position: absolute;
+            right: 100%; /* 让标签显示在图标右侧 */
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #6a9c31;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px; /* 圆角气泡效果 */
+            margin-left: 15px; /* 与图标的距离 */
+            white-space: nowrap; /* 防止文字换行 */
+        }
+        
+        /* 鼠标悬停时显示气泡 */
+        .menu-item:hover .label {
+            display: inline-block;
+        }
+
+        /* 鼠标悬停时菜单项背景色变化 */
+        .menu-item:hover {
+            background-color: #6a9c31;
+        }
+		
+		
+		body {
+		   
+		    
+		}
+		
+	/* 导航栏容器 */
+	.navbar {
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    background-color: rgba(255, 255, 255, 0.8); /* 透明背景 */
+	    padding: 15px 30px;
+	    color: #333;
+	    border-radius: 20px; /* 圆角 */
+	    width: 75%; /* 宽度为页面宽度的75% */
+	    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+	    position: fixed; /* 固定位置 */
+	    top: 20px; /* 离页面顶部20px */
+	    left: 50%; /* 水平居中 */
+	    transform: translateX(-50%); /* 通过平移实现完全居中 */
+	    z-index: 1000; /* 确保导航栏位于页面其他元素之上 */
+	}
+
+
+
+		
+		/* 网站标题 */
+		.navbar-brand {
+		    font-size: 24px;
+		    font-weight: bold; /* 加粗字体 */
+		    color: #333;
+		    text-decoration: none;
+		}
+		
+		/* 导航链接 */
+		.nav-links {
+		    display: flex;
+		    list-style: none;
+		}
+		
+		.nav-links li {
+		    margin-left: 20px;
+		}
+		
+		.nav-links a {
+		    color: #333;
+		    text-decoration: none;
+		    font-size: 16px;
+		    font-weight: bold; /* 加粗字体 */
+		    transition: color 0.3s ease;
+		}
+		
+		.nav-links a:hover {
+		    color: #6a9c31;
+		}
+		
+		/* 搜索框 */
+		.search-box {
+		    display: flex;
+		    align-items: center;
+		}
+		
+		.search-box input[type="text"] {
+		    padding: 8px;
+		    border: 1px solid #ccc;
+		    border-radius: 10px; /* 圆角 */
+		    margin-right: 10px;
+		    font-size: 14px;
+		    outline: none;
+		}
+		
+		.search-box button {
+		    padding: 8px 15px;
+		    background-color: #6a9c31;
+		    border: none;
+		    border-radius: 10px; /* 圆角 */
+		    color: white;
+		    cursor: pointer;
+		    font-weight: bold; /* 加粗字体 */
+		    transition: background-color 0.3s ease;
+		}
+		
+		.search-box button:hover {
+		    background-color: #5a8c21;
+		}
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="menu-item">
+            <span class="icon">🏠</span>
+            <span class="label">首页</span>
+        </div>
+        <div class="menu-item">
+            <span class="icon">🌍</span>
+            <span class="label">公司文化</span>
+        </div>
+        <div class="menu-item">
+            <span class="icon">📦</span>
+            <span class="label">公司产品</span>
+        </div>
+        <div class="menu-item">
+            <span class="icon">📈</span>
+            <span class="label">公司业务</span>
+        </div>
+        <div class="menu-item">
+            <span class="icon">🛒</span>
+            <span class="label">购物车</span>
+        </div>
+        <div class="menu-item">
+            <span class="icon">✉️</span>
+            <span class="label">联系我们</span>
+        </div>
+    </div>
+	
+	<header class="navbar">
+	    <a href="#" class="navbar-brand">清小北</a>
+	    <ul class="nav-links">
+	        <li><a href="#">小程序</a></li>
+	        <li><a href="#">测试网页</a></li>
+	        <li><a href="#">商单合作</a></li>
+	    </ul>
+	    <div class="search-box">
+	        <input type="text" placeholder="搜索">
+	        <button>搜索</button>
+	    </div>
+	
+	</header>
+	<div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden;">
+	  <iframe 
+	    src="photo.html" 
+	    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+	  ></iframe>
+	</div>
+</body>
+</html>

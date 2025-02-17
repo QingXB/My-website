@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        /* 全局设置 */
+        * {
+            margin: 0;
+            
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            
+        }
+
+        /* 导航栏容器 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8); /* 透明背景 */
+            padding: 15px 30px;
+            color: #333;
+            border-radius: 20px; /* 圆角 */
+            width: 75%; /* 宽度为页面宽度的75% */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+        }
+
+        /* 网站标题 */
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold; /* 加粗字体 */
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* 导航链接 */
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold; /* 加粗字体 */
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #6a9c31;
+        }
+
+        /* 搜索框 */
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 10px; /* 圆角 */
+            margin-right: 10px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box button {
+            padding: 8px 15px;
+            background-color: #6a9c31;
+            border: none;
+            border-radius: 10px; /* 圆角 */
+            color: white;
+            cursor: pointer;
+            font-weight: bold; /* 加粗字体 */
+            transition: background-color 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background-color: #5a8c21;
+        }
+    </style>
+</head>
+<body>
+	
+    <header class="navbar">
+        <a href="#" class="navbar-brand">清小北</a>
+        <ul class="nav-links">
+            <li><a href="#">小程序</a></li>
+            <li><a href="#">测试网页</a></li>
+            <li><a href="#">商单合作</a></li>
+        </ul>
+        <div class="search-box">
+            <input type="text" placeholder="搜索">
+            <button>搜索</button>
+        </div>
+		
+    </header>
+</body>
+</html>
