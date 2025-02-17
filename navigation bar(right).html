@@ -186,6 +186,18 @@
 		    background-color: #5a8c21;
 		}
     </style>
+	<script>
+	    // 确保 DOM 加载完成后再执行
+	    document.addEventListener('DOMContentLoaded', function () {
+	        // 获取菜单项元素
+	        const menuItem = document.getElementById('company-culture');
+	
+	        // 添加点击事件处理函数
+	        menuItem.addEventListener('click', function () {
+	            window.location.href = "LOVE.html";  // 替换成目标页面的路径
+	        });
+	    });
+	</script>
 </head>
 <body>
     <div class="sidebar">
@@ -193,7 +205,7 @@
             <span class="icon">🏠</span>
             <span class="label">首页</span>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" id="company-culture">
             <span class="icon">🌍</span>
             <span class="label">公司文化</span>
         </div>
